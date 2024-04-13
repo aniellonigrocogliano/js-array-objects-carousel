@@ -9,7 +9,7 @@ function printInDom(photo) {
     for (let i = 0; i < photo.length; i++) {
         const singlePhoto = photo[i];
         caroselClass.innerHTML += `
-        <div class="my-carousel-item" carousel-item="${i+1}">
+        <div class="my-carousel-item" carousel-item="${i + 1}">
         <img
           class="img-fluid"
           src="./${singlePhoto.image}"
@@ -25,28 +25,56 @@ function printInDom(photo) {
         `;
         const photoClass = document.querySelector(".my-carousel-item");
         photoClass.classList.add("active");
-        console.log(caroselClass)
     }
 }
 
 function nextPhoto() {
     const photoClass = document.querySelectorAll(".my-carousel-item");
+    const thum = document.querySelectorAll(".my-thumbnail");
     photoClass[actualPhoto].classList.remove("active");
-    if(actualPhoto <photoClass.length -1){
+    thum[actualPhoto].classList.remove("active");
+    if (actualPhoto < photoClass.length - 1) {
         actualPhoto++;
-    }else{
+    } else {
         actualPhoto = 0;
     }
-     photoClass[actualPhoto].classList.add("active");
+    photoClass[actualPhoto].classList.add("active");
+    thum[actualPhoto].classList.add("active");
 }
 
 function prevPhoto() {
     const photoClass = document.querySelectorAll(".my-carousel-item");
+    const thum = document.querySelectorAll(".my-thumbnail");
     photoClass[actualPhoto].classList.remove("active");
-    if(actualPhoto > 0){
+    thum[actualPhoto].classList.remove("active");
+    if (actualPhoto > 0) {
         actualPhoto--;
-    }else{
+    } else {
         actualPhoto = 4;
     }
-     photoClass[actualPhoto].classList.add("active");
+    photoClass[actualPhoto].classList.add("active");
+    thum[actualPhoto].classList.add("active");
+}
+
+function printInDomTh(photo) {
+    const caroselClass = document.querySelector(".my-thumbnails");
+    caroselClass.innerHTML += `<div class="my-previous position-absolute">
+    <span class="my-prev-hook"></span>
+  </div>
+  <!-- next -->
+  <div class="my-next position-absolute">
+    <span class="my-next-hook"></span>
+  </div>`;
+    for (let i = 0; i < photo.length; i++) {
+        const singlePhoto = photo[i];
+        caroselClass.innerHTML += `
+        <img
+                  class="img-fluid my-thumbnail"
+                  src="./${singlePhoto.image}"
+                  alt="${singlePhoto.title}"
+                />
+        `;
+        const photoClass = document.querySelector(".my-thumbnail");
+        photoClass.classList.add("active");
+    }
 }
