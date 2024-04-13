@@ -1,9 +1,8 @@
 
 /**
- * Legge array e con for key ogni elemento dell'oggetto infine stampa il risultato DOM
- * @date 11/4/2024 - 18:17:04
+ * Legge array e stampa il risultato DOM
  *
- * @param {array di oggetti} team
+ * @param {array di oggetti} photo
  */
 function printInDom(photo) {
     const caroselClass = document.querySelector(".my-carousel-images");
@@ -28,4 +27,15 @@ function printInDom(photo) {
         photoClass.classList.add("active");
         console.log(caroselClass)
     }
+}
+
+function nextPhoto() {
+    const photoClass = document.querySelectorAll(".my-carousel-item");
+    photoClass[actualPhoto].classList.remove("active");
+    if(actualPhoto <photoClass.length -1){
+        actualPhoto++;
+    }else{
+        actualPhoto = 0;
+    }
+     photoClass[actualPhoto].classList.add("active");
 }

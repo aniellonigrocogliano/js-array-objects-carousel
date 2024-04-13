@@ -25,4 +25,9 @@ const images = [
     text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.",
   },
 ];
-printInDom(images)
+let actualPhoto=0;
+const next = document.querySelector(".my-next-hook");
+printInDom(images);
+next.addEventListener("click", function () {
+  nextPhoto();
+})
