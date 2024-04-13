@@ -39,3 +39,14 @@ function nextPhoto() {
     }
      photoClass[actualPhoto].classList.add("active");
 }
+
+function prevPhoto() {
+    const photoClass = document.querySelectorAll(".my-carousel-item");
+    photoClass[actualPhoto].classList.remove("active");
+    if(actualPhoto > 0){
+        actualPhoto--;
+    }else{
+        actualPhoto = 4;
+    }
+     photoClass[actualPhoto].classList.add("active");
+}

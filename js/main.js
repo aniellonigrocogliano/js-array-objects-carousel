@@ -27,7 +27,11 @@ const images = [
 ];
 let actualPhoto=0;
 const next = document.querySelector(".my-next-hook");
+const prev = document.querySelector(".my-prev-hook");
 printInDom(images);
 next.addEventListener("click", function () {
   nextPhoto();
+})
+prev.addEventListener("click", function () {
+ prevPhoto();
 })
