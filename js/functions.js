@@ -78,3 +78,17 @@ function printInDomTh(photo) {
         photoClass.classList.add("active");
     }
 }
+function clickTh() {
+    const photoClass = document.querySelectorAll(".my-carousel-item");
+    const thum = document.querySelectorAll(".my-thumbnail");
+    for (let i = 0; i < photoClass.length; i++) {
+        thum[i].addEventListener("click", function () {
+            photoClass[actualPhoto].classList.remove("active");
+            thum[actualPhoto].classList.remove("active");
+            photoClass[i].classList.add("active");
+            thum[i].classList.add("active");
+            actualPhoto = i;
+        })
+
+    }
+}

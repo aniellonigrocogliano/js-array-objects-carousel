@@ -26,14 +26,44 @@ const images = [
   },
 ];
 let actualPhoto = 0;
-
+let functionActive = nextPhoto;
+let activeOn = true;
+let nextOn = true;
 printInDom(images);
 printInDomTh(images);
+clickTh()
 const next = document.querySelector(".my-next");
 const prev = document.querySelector(".my-previous");
+const active = document.getElementById("my-stop-button");
+const invert = document.getElementById("my-order-button");
 next.addEventListener("click", function () {
   nextPhoto();
 })
 prev.addEventListener("click", function () {
   prevPhoto();
+})
+
+timer = setInterval(function () {
+  functionActive()
+}, 3000);
+active.addEventListener("click", function () {
+  if (activeOn) {
+    clearInterval(timer);
+    activeOn = false;
+  } else {
+    timer = setInterval(function () {
+      functionActive()
+    }, 3000);
+    activeOn = true;
+  }
+})
+
+invert.addEventListener("click", function () {
+  if (nextOn) {
+    functionActive = prevPhoto;
+    nextOn = false;
+  } else {
+    functionActive = nextPhoto;
+    nextOn = true;
+  }
 })
