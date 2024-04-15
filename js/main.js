@@ -44,7 +44,7 @@ prev.addEventListener("click", function () {
 })
 
 timer = setInterval(function () {
-  functionActive()
+  functionActive();
 }, 3000);
 active.addEventListener("click", function () {
   if (activeOn) {
@@ -52,7 +52,7 @@ active.addEventListener("click", function () {
     activeOn = false;
   } else {
     timer = setInterval(function () {
-      functionActive()
+      functionActive();
     }, 3000);
     activeOn = true;
   }
